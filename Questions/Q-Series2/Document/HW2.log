@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.8.23)  6 OCT 2022 22:47
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.8.23)  25 OCT 2022 23:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1130,75 +1130,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 71--95
 
 
 LaTeX Font Warning: Font shape `TU/XBYas.ttf(0)/b/n' undefined
-(Font)              using `TU/XBYas.ttf(0)/m/n' instead on input line 107.
+(Font)              using `TU/XBYas.ttf(0)/m/n' instead on input line 117.
 
 [1
 
-] [2] [3] [4] [5] [6] [7] [8]
-(c:/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty
+] (c:/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
-) [9] [10] [11]
-Overfull \hbox (15.34297pt too wide) in paragraph at lines 752--782
- [][][] 
- []
-
-Missing character: There is no − ("2212) in font t1xtt!
-[12] [13]
-File: fig1.png Graphic file (type bmp)
-<fig1.png>
- [14]
-File: fig2.png Graphic file (type bmp)
-<fig2.png>
- [15]
-File: fig3.png Graphic file (type bmp)
-<fig3.png>
- [16]
-File: fig4.png Graphic file (type bmp)
-<fig4.png>
-File: fig5.png Graphic file (type bmp)
-<fig5.png>
-File: fig6.png Graphic file (type bmp)
-<fig6.png>
-File: fig7.png Graphic file (type bmp)
-<fig7.png>
- [17]
-Underfull \hbox (badness 1783) in paragraph at lines 1034--1042
-[][]\TU/XBYas.ttf(0)/m/n/12 داده‌هایی که در این بخش استفاده می‌شود مستقیم از خو
-د سایت جمع‌آوری شده‌اند. یعنی از همان لینک[]
- []
-
-[18] [19]
-File: fig8.png Graphic file (type bmp)
-<fig8.png>
-File: fig9.png Graphic file (type bmp)
-<fig9.png>
- [20]
-File: fig10.png Graphic file (type bmp)
-<fig10.png>
-File: fig11.png Graphic file (type bmp)
-<fig11.png>
-
-Overfull \hbox (4.11066pt too wide) in paragraph at lines 1186--1188
-[][][][][] [][][] []
- []
-
-[21] [22] [23] [24] [25] [26] (./HW2.aux)
+) [2] (./HW2.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 Package rerunfilecheck Info: File `HW2.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 27333 strings out of 476919
- 536246 string characters out of 5825424
- 1117429 words of memory out of 5000000
- 46775 multiletter control sequences out of 15000+600000
- 412536 words of font info for 87 fonts, out of 8000000 for 9000
+ 26806 strings out of 476919
+ 529184 string characters out of 5825424
+ 1085242 words of memory out of 5000000
+ 46268 multiletter control sequences out of 15000+600000
+ 409236 words of font info for 66 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 113i,9n,116p,4821b,1868s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 113i,8n,116p,4821b,1234s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on HW2.pdf (26 pages).
+Output written on HW2.pdf (2 pages).
