@@ -1,0 +1,37 @@
+These are the datasets link . 
+Search about them on Kaggle
+or use these links 
+
+
+1 - Weather in Szeged 2006-2016 : 
+
+
+	https://www.kaggle.com/datasets/budincsevity/szeged-weather?datasetId=634 
+
+
+2 - Weather Conditions in World War Two
+
+
+	https://www.kaggle.com/datasets/smid80/weatherww2?select=Weather+Station+Locations.csv
+
+
+
+3 - The Ultimate Halloween Candy Power Ranking
+
+
+	https://www.kaggle.com/datasets/fivethirtyeight/the-ultimate-halloween-candy-power-ranking
+
+
+4 - Airline Ticket Price dataset - ATP1D
+
+
+	https://www.kaggle.com/datasets/samanemami/airline-ticket-price-dataset-atp1d
+
+
+5 - River Flow-RF1
+
+
+	https://www.kaggle.com/datasets/samanemami/river-flowrf1
+
+
+
