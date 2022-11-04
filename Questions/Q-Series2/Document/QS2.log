@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.8.23)  25 OCT 2022 23:55
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.8.23)  2 NOV 2022 10:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**HW2.tex
-(./HW2.tex
+**QS2.tex
+(./QS2.tex
 LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-02-18>
 (c:/texlive/2021/texmf-dist/tex/latex/base/article.cls
@@ -1024,8 +1024,8 @@ LaTeX Font Info:    Trying to load font information for T1+txtt on input line 3
 1.
  (c:/texlive/2021/texmf-dist/tex/latex/txfonts/t1txtt.fd
 File: t1txtt.fd 2000/12/15 v3.1
-) (./HW2.aux)
-\openout1 = `HW2.aux'.
+) (./QS2.aux)
+\openout1 = `QS2.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 70.
 LaTeX Font Info:    ... okay on input line 70.
@@ -1105,9 +1105,9 @@ LaTeX Info: Redefining \ref on input line 70.
 LaTeX Info: Redefining \pageref on input line 70.
 LaTeX Info: Redefining \nameref on input line 70.
 
-(./HW2.out) (./HW2.out)
+(./QS2.out) (./QS2.out)
 \@outlinefile=\write4
-\openout4 = `HW2.out'.
+\openout4 = `QS2.out'.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
@@ -1136,11 +1136,11 @@ LaTeX Font Warning: Font shape `TU/XBYas.ttf(0)/b/n' undefined
 
 ] (c:/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
-) [2] (./HW2.aux)
+) [2] (./QS2.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package rerunfilecheck Info: File `HW2.out' has not changed.
+Package rerunfilecheck Info: File `QS2.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
@@ -1152,4 +1152,4 @@ Here is how much of TeX's memory you used:
  1348 hyphenation exceptions out of 8191
  113i,8n,116p,4821b,1234s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on HW2.pdf (2 pages).
+Output written on QS2.pdf (2 pages).

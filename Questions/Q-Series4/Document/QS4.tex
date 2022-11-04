@@ -1,0 +1,126 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{dblfnote}
+\usepackage[perpage]{footmisc}
+\usepackage{indentfirst}
+\usepackage{framed}
+\usepackage{tikz}
+\usepackage{listings}[language=Python]
+\usepackage{float}
+%\usepackage{multicol}
+
+\usepackage{setspace}
+%\usepackage[skip=2mm, indent=17pt]{parskip}
+\onehalfspacing
+%\doublespacing
+
+
+% Custom colors
+\usepackage{color}
+
+%\setcounter{secnumdepth}{0}
+
+\usepackage[top=3cm, bottom=3cm, left = 2cm, right = 2cm]{geometry} 
+\geometry{a4paper} 
+\usepackage{url}
+\usepackage{graphicx} 
+\usepackage{amsmath,amssymb}  
+\usepackage[hidelinks]{hyperref}
+\usepackage[labelformat=empty]{caption}
+\usepackage{xepersian}
+\settextfont{XB Yas.ttf}
+\usepackage[utf8]{inputenc}
+
+%\usepackage{xepersian}
+
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\newcommand\pythonstyle{\lstset{
+		language=Python,
+		basicstyle=\ttm,
+		morekeywords={self},              % Add keywords here
+		keywordstyle=\ttb\color{deepblue},
+		emph={MyClass,__init__},          % Custom highlighting
+		emphstyle=\ttb\color{deepred},    % Custom highlighting style
+		stringstyle=\color{deepgreen},
+		frame=single,                         % Any extra options here
+		showstringspaces=false
+}}
+
+
+% Python environment
+\lstnewenvironment{python}[1][]
+{
+	\pythonstyle
+	\lstset{#1}
+}
+{}
+
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+		\pythonstyle
+		\lstinputlisting[#1]{#2}}}
+
+% Python for inline
+\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+
+
+
+
+\begin{document}	
+\noindent
+\begin{minipage}[c]{5cm}
+	\baselineskip=.7cm
+	\begin{flushright}
+		درس : یادگیری ماشین 
+		\\
+		دانشجو :
+		امیرمحمد خرازی
+		\\
+		شماره دانشجویی :
+		40152521002 
+		\\
+		استاد درس :  
+		\href{mrezghi.ir}{دکتر منصور رزقی آهق}
+	\end{flushright}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{3cm}
+	\begin{center}
+		\href{modares.ac.ir}{
+			\includegraphics[width=2cm]{logo.png}}
+	\end{center}	
+\end{minipage}
+\\[1mm]
+\hrule depth .5mm \relax
+\begin{flushright}
+	پرسش‌های کلاسی سری چهارم
+	\hfill
+	دانشکده علوم ریاضی ، گروه علوم کامپیوتر، گرایش داده‌کاوی
+	\\
+	\vspace{5mm}
+	گیت‌هاب درس (
+	\href{https://github.com/A-M-Kharazi/Machine-Learning-TMU.git}{لینک}
+	)
+	\hfill
+	گیت‌هاب این پرسش (
+	\href{https://github.com/A-M-Kharazi/Machine-Learning-TMU/tree/main/Questions/Q-Series4}{لینک}
+	)
+\end{flushright}
+
+\hrule depth .5mm\relax
+
+%\tableofcontents
+%\newpage
+
+
+
+
+\end{document}
+
+
