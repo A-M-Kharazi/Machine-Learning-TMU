@@ -118,7 +118,145 @@
 %\tableofcontents
 %\newpage
 
+\section*{گزارش و توضیحات : }
 
+توضیحات کامل داخل کد‌ها آورده شده است و در اینجا نیازی به توضیحات بیشتر نیست.
+
+در جایی از سوال که از ما خواسته است منظم‌ سازی با استفاده نرم ۲ را به کمک روش‌های ماتریسی حل کنیم داریم :
+
+مسئله : 
+\[
+\min ||\Phi W - t || _2^2 + \lambda ||W||_2^2
+\]
+معادل است با :
+
+\[
+\min ||[\Phi, \sqrt{\lambda}I]^T W - [t, 0]^T ||_2^2
+\]
+
+من برای اینکه به صورت ماتریس ستونی ننویسم همه را یک 
+\lr{transpose}
+گرفتم.
+
+
+ دلیل ؟‌
+ 
+ می‌دانیم 
+ $||X||^2_2 = X^TX$
+ فرض کنید معادله بالا بصورت زیر است 
+ $||A||_2^2$
+ که در آن 
+ $A = [\Phi, \sqrt{\lambda}I]^T W - [t, 0]^T$.
+ 
+ 
+ حال جواب آن برابر خواهد بود با 
+ $A^TA$
+ که یعنی 
+ $\left( [\Phi, \sqrt{\lambda}I]^T W - [t, 0]^T\right)^T\left( [\Phi, \sqrt{\lambda}I]^T W - [t, 0]^T\right)$
+ 
+ \begin{align*}
+ 	&\Longrightarrow \left( [\Phi, \sqrt{\lambda}I]^T W - [t, 0]^T\right)^T\left( [\Phi, \sqrt{\lambda}I]^T W - [t, 0]^T\right)\\
+ 	&\Longrightarrow \left( [\Phi W - t , \sqrt{\lambda}W]^T\right)^T \left([\Phi W - t , \sqrt{\lambda}W]^T\right)\\
+ 	&\Longrightarrow \left([\Phi W - t , \sqrt{\lambda}W]\right)\left([\Phi W - t , \sqrt{\lambda}W]^T\right)\\
+ 	&\Longrightarrow \left([\Phi W - t][\Phi W - t]^T\right) + \sqrt{\lambda}W \sqrt{\lambda}W^T\\
+ 	&\Longrightarrow \text{
+ 	هر جا ترانهاده است، عملا نیست و هر جا نیست، عملا هست. 
+ }\\
+&\Longrightarrow\text{
+به این دلیل اینطوری شد که از اول همه را بصورت ترانهاده گرفته بودم.	
+}\\
+&\Longleftrightarrow \text{
+بخش اول تعریف نرم ۲ و رگرسیون است و بخش دوم تعریف نرم ۲ و منظم ساز است
+}\\
+&\Longrightarrow ||\Phi W - t || _2^2 + \sqrt{\lambda}\sqrt{\lambda}||W||_2^2 = ||\Phi W - t || _2^2 + \lambda||W||_2^2
+ \end{align*}
+
+لذا معادل هستند.
+
+
+جواب این بهینه سازی بصورت 
+$(\Phi^T\Phi + \lambda I )W = \Phi^T t$
+است.
+
+
+دلیل ؟ 
+فرض کنید تابع هدف بصورت زیر است : 
+$||AW - T ||_2^2$
+که در آن 
+$A = [\Phi,\sqrt{\lambda}I]^T$
+و
+$T = [t, 0]^T$
+. جواب این بهینه سازی، با حل دستگاه زیر صورت می‌گیرد :
+$(A^TA)W = A^TT$
+
+داریم :
+\begin{align*}
+	&\Longrightarrow (A^TA)W = A^TT \\
+	&\Longrightarrow \left([\Phi^T,\sqrt{\lambda}I] [\Phi,\sqrt{\lambda}I]^T\right) W = [\Phi^T,\sqrt{\lambda}I][t, 0]^T\\
+	&\Longrightarrow \left(\Phi^T \Phi  + \lambda I\right)W = \left(\Phi^T t + 0\right)\\
+	&\Longrightarrow \left(\Phi^T \Phi  + \lambda I\right)W =  \left(\Phi^T t\right)
+\end{align*}
+
+همچنین نتیجه‌ای که از کد‌ها گرفتیم این بود که با نرم ۲ خیلی به داده‌های پرت حساس می‌شویم و عملا 
+\lr{overfit}
+داریم ، یا خیلی روی داده‌های آموزش متمرکز می‌شویم که اندازه 
+$W$
+خیلی زیاد می‌شود و روی داده‌های آزمایش بد عمل می‌کنیم که باز هم 
+\lr{overfit}
+داریم. این شرایط برای زمانی بود که از رگرسیون معمولی استفاده می‌کردیم. 
+
+
+اگر از رگرسیون با تابع 
+\lr{loss}
+نرم ۱ استفاده کنیم به نقاط پرت کمتر حساسیم و در اغلب موارد نتیجه بهتری می‌گیریم. 
+
+با منظم‌سازی های نرم ۱ و نرم ۲ می‌توانیم اندازه 
+$W$
+را کنترل کنیم که 
+\lr{overfit}
+نکنیم. 
+
+با نرم ۱ در منظم‌سازی، دیدیم که اغلب 
+$w \in W $
+مقدار نزدیک به صفر می‌گیرند ولی بعضی از آن‌ها مقدار قابل توجهی دارند. با این روش منظم سازی می‌توانیم پیچیدگی مدل را کاهش دهیم، ابعاد را کمتر کنیم و غیره . که این منظم سازی 
+$W$
+را 
+\lr{sparse}
+می‌کند.
+
+
+با نرم ۲ در منظم‌سازی، دیدیم که اغلب 
+$w \in W$
+مقدار نزدیک به هم دارند. یعنی عملا بیشتر 
+$w$
+ها در یک رنج هستند. این منظم سازی 
+$W$
+را 
+\lr{smooth}
+می‌کند.
+
+
+با روش 
+\lr{ElasticNet}
+تلاش کردیم هر دو این موارد را  منظم‌سازی ها را به اجرا برسانیم.
+
+
+
+\subsection*{مشکلات}
+
+از نمونه به مشکلاتی که برخوردیم  :
+
+
+\begin{itemize}
+	\item 
+	عدم همگرایی منظم‌سازی نرم ۱ 
+	\item
+	عدم همگرایی منظم‌سازی 
+	\lr{ElasticNet}
+	و برازش تنها 
+	$W_0$
+	در آن.
+\end{itemize}
 
 
 \end{document}

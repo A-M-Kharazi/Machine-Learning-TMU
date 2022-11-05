@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.8.23)  2 NOV 2022 11:00
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.8.23)  5 NOV 2022 23:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1131,19 +1131,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 76--100
 [][]
  []
 
+
+LaTeX Font Warning: Font shape `TU/XBYas.ttf(0)/b/n' undefined
+(Font)              using `TU/XBYas.ttf(0)/m/n' instead on input line 121.
+
 [1
 
-] (./QS4.aux)
+] [2] (./QS4.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
 Package rerunfilecheck Info: File `QS4.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 26641 strings out of 476919
- 527345 string characters out of 5825424
- 947219 words of memory out of 5000000
- 46106 multiletter control sequences out of 15000+600000
- 409220 words of font info for 64 fonts, out of 8000000 for 9000
+ 26655 strings out of 476919
+ 527914 string characters out of 5825424
+ 958219 words of memory out of 5000000
+ 46114 multiletter control sequences out of 15000+600000
+ 409260 words of font info for 69 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 113i,5n,116p,4821b,346s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 113i,10n,116p,4821b,347s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on QS4.pdf (1 page).
+Output written on QS4.pdf (2 pages).
