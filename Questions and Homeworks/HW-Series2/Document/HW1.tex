@@ -1,0 +1,237 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{dblfnote}
+\usepackage[perpage]{footmisc}
+\usepackage{indentfirst}
+\usepackage{framed}
+\usepackage{tikz}
+\usepackage{listings}[language=Python]
+\usepackage{float}
+%\usepackage{multicol}
+
+\usepackage{setspace}
+%\usepackage[skip=2mm, indent=17pt]{parskip}
+\onehalfspacing
+%\doublespacing
+
+
+% Custom colors
+\usepackage{color}
+
+%\setcounter{secnumdepth}{0}
+
+\usepackage[top=3cm, bottom=3cm, left = 2cm, right = 2cm]{geometry} 
+\geometry{a4paper} 
+\usepackage{url}
+\usepackage{graphicx} 
+\usepackage{amsmath,amssymb}  
+\usepackage[hidelinks]{hyperref}
+\usepackage[labelformat=empty]{caption}
+\usepackage{xepersian}
+\settextfont{XB Yas.ttf}
+\usepackage[utf8]{inputenc}
+
+%\usepackage{xepersian}
+
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\newcommand\pythonstyle{\lstset{
+		language=Python,
+		basicstyle=\ttm,
+		morekeywords={self},              % Add keywords here
+		keywordstyle=\ttb\color{deepblue},
+		emph={MyClass,__init__},          % Custom highlighting
+		emphstyle=\ttb\color{deepred},    % Custom highlighting style
+		stringstyle=\color{deepgreen},
+		frame=single,                         % Any extra options here
+		showstringspaces=false
+}}
+
+
+% Python environment
+\lstnewenvironment{python}[1][]
+{
+	\pythonstyle
+	\lstset{#1}
+}
+{}
+
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+		\pythonstyle
+		\lstinputlisting[#1]{#2}}}
+
+% Python for inline
+\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+
+
+
+
+\begin{document}	
+\noindent
+\begin{minipage}[c]{5cm}
+	\baselineskip=.7cm
+	\begin{flushright}
+		درس : یادگیری ماشین 
+		\\
+		دانشجو :
+		امیرمحمد خرازی
+		\\
+		شماره دانشجویی :
+		40152521002 
+		\\
+		استاد درس :  
+		\href{mrezghi.ir}{دکتر منصور رزقی آهق}
+	\end{flushright}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{3cm}
+	\begin{center}
+		\href{modares.ac.ir}{
+			\includegraphics[width=2cm]{logo.png}}
+	\end{center}	
+\end{minipage}
+\\[1mm]
+\hrule depth .5mm \relax
+\begin{flushright}
+	تمرین کلاسی سری دوم
+	\hfill
+	دانشکده علوم ریاضی ، گروه علوم کامپیوتر، گرایش داده‌کاوی
+	\\
+	\vspace{5mm}
+	گیت‌هاب درس (
+	\href{https://github.com/A-M-Kharazi/Machine-Learning-TMU.git}{لینک}
+	)
+	\hfill
+	گیت‌هاب این تمرین (
+	\href{https://github.com/A-M-Kharazi/Machine-Learning-TMU/tree/main/Questions%20and%20Homeworks/HW-Series2}{لینک}
+	)
+\end{flushright}
+
+\hrule depth .5mm\relax
+
+%\tableofcontents
+%\newpage
+
+\section*{اطلاعات اضافی}
+
+گزارش کامل تر در مورد این تمرین بعدا در گیت‌هاب قرار خواهد گرفت.
+
+جزئیات روش‌هایی نیز که در آن برای بدست آوردن کلاس بندی یا خلاصه سازی استفاده شده است، نیز بطور کامل در کد این تمرین آورده شده است.
+
+برای این تمرین از آنجایی که تعداد فیچر ها بسیار بالا بود، خیلی به مشکل حافظه بر خورد کردم . 
+
+تمرین دوم، با چنین مشکلی روبرو نشدم.
+
+تمرین اول، برای ویدئو های مختلف این مشکل وجود داشت. مثلا 
+در حالتی که میخواستیم 
+
+$$
+\Phi(X)W = \hat{X}
+$$
+ 
+ را بدست آوریم، همین محاسبه 
+ $\Phi$
+ بسیار زمان بر و حافظه پر کن بود که مشکلاتی در بخش پیاده سازی می‌خورد. 
+ 
+ اینکه این 
+ $\Phi$
+ و
+ $W$
+ و
+ $\hat{X}$
+ چیست در کد توضیح داده شده است.
+ 
+ برای حل این مشکل پشنهادی دادم : بجای اینکه یک مدل بسازیم که همه فریم ها را بازسازی کند. مثلا فرض کنید ۱۰۰ فریم داریم، ۱۰۰ مدل می‌سازیم که هر مدل یک فریم را بازسازی می‌کند. 
+ 
+ بعد از این وزن‌های بدست آمده از هر مدل را مرتب کرده و مثلا اگگر می‌خواستیم ۱۰ تای مهمترین را انتخاب کنیم، تا ۱۰ تای این 
+ $W$
+ را در نظر می‌گرفتیم.  
+ 
+ برای هر مدل ۱۰ تا از مهمترین 
+ $W$
+ ها را انتخاب می‌کردیم و سپس ماتریسی به نام
+ $A$
+ می‌سازیم.
+ 
+ این ماتریس یک ماتریس شمارنده است . یعنی به تعداد ۱۰ تا ستون دارد و به تعداد 
+ $W$
+ ها (100 تا داده ، ۱۰۰ تا $w$)
+ .
+
+سپس در هر خانه 
+$a_{i,j}$
+، تعداد 
+$W_i$
+هایی که در محل 
+$j$
+قرار دارند، را شمرده ایم. 
+مثلا 
+$W1$
+۵ بار بزرگترین 
+$W$
+شده است
+.
+$W2$
+7 
+بار بزرگترین 
+$W$
+شده است. 
+و به همین شکل برای بقیه 
+$W$
+ها.
+
+سپس در ماتریس 
+$A$
+به صورت ستونی، بزرگترین 
+شمارنده را انتخاب کرده و فریم مورد نظر آن‌را به عنوان مهم ترین فریم انتخاب می‌کنیم. سپس سطر متناظر آن را از 
+محاسبات بعدی، حذف می‌کنیم. 
+
+مثلا 
+در محل ۱ (که برابر بزگترین 
+$w$
+است
+)
+$W2$
+با تعداد ۷ تکرار انتخاب شده است در نتیجه 
+$X2$
+به عنوان یکی از مهمترین فریم ها انتخاب می‌شود. 
+
+سپس سطر متناظر 
+$W2$
+حذف می‌شود تا بعداد دوباره انتخاب نشود. 
+به همین ترتیب ادامه داده تا به تعداد مورد نظر فریم مهم برسیم. 
+
+
+سپس فریم های مهم را به ترتیب ظاهر شدن در فیلم اصلی، مرتب کرده (تا 
+\lr{time line}
+فیلم اصلی حفظ شود
+)
+و آن‌ها را ذخیره و نمایش می‌دهیم.
+
+
+
+از آنجایی که محاسبات بسیار طولانی است، چندین نمونه از عملکرد این برنامه نمایش داده شده است.
+
+\textbf{
+اگر خودتان برنامه را اجرا می‌کنید، در بخش خلاصه سازی فیلم‌ها، بسیار کند است و ممکن است ساعت ها به طول بکشد. 
+\\
+در خصوص داده های 
+ORL
+اینگونه نیست و سریع تر جواب می‌دهد.
+}
+
+کلاس بندی داده های 
+ORL
+نیز به دو روش انجام شده است که در خود کد، توضیح داده شده اند.
+
+
+
+\end{document}
+
+

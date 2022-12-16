@@ -1,0 +1,6 @@
+\beamer@sectionintoc {1}{Signal Processing}{3}{0}{1}
+\beamer@sectionintoc {2}{Fourier Transform}{9}{0}{2}
+\beamer@subsectionintoc {2}{1}{Statistical parameter estimation and feature extraction}{15}{0}{2}
+\beamer@sectionintoc {3}{Wavelet}{17}{0}{3}
+\beamer@subsectionintoc {3}{1}{Short-Time Fourier Transform}{22}{0}{3}
+\beamer@subsectionintoc {3}{2}{Wavelet Transform}{24}{0}{3}

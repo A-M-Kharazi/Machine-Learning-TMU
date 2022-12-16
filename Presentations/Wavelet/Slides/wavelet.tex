@@ -1,5 +1,6 @@
 \documentclass{beamer}
 \usepackage{hyperref}
+\usepackage{listings}
 
 
 \usetheme{Copenhagen}
@@ -45,7 +46,7 @@
 	
 	\section{Signal Processing}
 	\begin{frame}
-		\frametitle{Signals vs Time Series}
+		\frametitle{Signals and Time Series}
 		
 		\begin{itemize}
 			\item
@@ -145,21 +146,7 @@
 	\end{frame}
 
 	\section{Fourier Transform}
-	\begin{frame}
-		\frametitle{Fourier series}
-		
-		\begin{itemize}
-			\item
-			Is a sum that represents a periodic function as a sum of sine and cosine waves
-			
-		\end{itemize}
 	
-		\[
-		S_N(x) = \frac{a_0}{2} + \sum\limits_{i=1}^{N}\left(a_i\cos\left(\frac{2\pi}{P}i x\right) + b_i \sin\left(\frac{2\pi}{P}i x\right)\right)
-		\]
-			
-	\end{frame}
-
 	\begin{frame}
 		\frametitle{Fourier Transform}
 		
@@ -173,69 +160,89 @@
 			
 			\item
 			
-			Transform a signal from its time-domain to its frequency domain.
+			Transform a signal from its \textbf{time-domain} to its \textbf{frequency domain}.
+			
+			\item
+			
+			Inverse Fourier Transform.
+			
+			\item
+			DFT : FFT in scipy and numpy (\lstinline|fft, ifft, fft2, ifft2, fftn, ifftn|).
 			
 		\end{itemize}
 		
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Example}
-		\begin{itemize}
-			\item 
-			We have five sine-waves (blue signals)
-			\item
-			By combining these signals we form a new composite signal (black)
-			\item
-			 The Fourier Transform transforms this signal to the frequency-domain (red signal) and shows us at which frequencies the component signals oscillate.
-			 
-			 \item Code is available at \github
-			
-		\end{itemize}
+		\frametitle{Fourier Transform}
 		
-	\end{frame}
-	
-	\begin{frame}
-		\frametitle{Example}
-		\begin{center}
-			\begin{figure}\label{fig2}
-				\includegraphics[scale=0.37]{signals3D_4.png}
-				\caption{ A signal (black) consisting of multiple component signals (blue) with DFT (red).}
-			\end{figure}
-		\end{center}
+		\begin{equation}\label{eq1}
+			y[k] = \sum\limits_{n=0}^{N-1} x[n].\exp^{-2\pi i k \frac{n}{N}}
+		\end{equation}
+		
+		\begin{equation}\label{eq2}
+			x[n] = \frac{1}{N}\sum\limits_{k=0}^{N-1}y[k].\exp^{2\pi i k \frac{n}{N}}
+		\end{equation}
+		
 	\end{frame}
 
-	\begin{frame}
-		\frametitle{FFT}
-		\begin{itemize}
-			\item 
-			FFT stands for Fast Fourier Transform.
-			
-			\item
-			In python FFT can be calculated using Scipy.
-			
-			\item
-			If for example,  our signal is sampled at a rate $f_s$ of $100 Hz$.The FFT will return the frequency spectrum up to a frequency of $f_s / 2 = 50 Hz$.
 
-			
-			\item
-			
-			The higher your sampling rate is, the higher the maximum frequency is FFT can calculate.
-			
-		\end{itemize}
-	\end{frame}
-	
+
 	\begin{frame}
-		\frametitle{Example}
+		\frametitle{Examples}
 		
-		Code is available at \github.
+		Full Explanation at \github.
 		
-		\begin{center}
-			\begin{figure}\label{fig3}
-				\includegraphics[scale=0.45]{fft_of_signal.png}
-				\caption{Red signal from the previous example}
-			\end{figure}
-		\end{center}
+		\begin{columns}
+			\begin{column}{0.4\textwidth}
+				\begin{figure}\label{fig2}
+					\begin{center}
+						\includegraphics[scale=0.3]{fig1.png}
+					\end{center}
+				\caption{Composite Signal with 0.24Hz, 0.49Hz and some random noise }
+				\end{figure}
+			\end{column}
+		
+			\begin{column}{0.4\textwidth}
+				\begin{figure}\label{fig3}
+					\begin{center}
+						\includegraphics[scale=0.3]{fig2.png}
+					\end{center}
+				\caption{Fourier Transform of the Signal. Two spikes at 0.24 and 0.49}
+				\end{figure}
+			\end{column}
+		\end{columns}
+		
+	\end{frame}
+
+
+
+		\begin{frame}
+		\frametitle{Examples}
+		
+		Full Explanation at \github.
+		
+		\begin{columns}
+			\begin{column}{0.4\textwidth}
+				\begin{figure}\label{fig4}
+					\begin{center}
+						\includegraphics[scale=0.22]{fig3.png}
+						\includegraphics[scale=0.22]{fig4.png}
+					\end{center}
+				\caption{Gray scale image and its FT}
+				\end{figure}
+			\end{column}
+			
+			\begin{column}{0.4\textwidth}
+				\begin{figure}\label{fig5}
+					\begin{center}
+						\includegraphics[scale=0.22]{fig6.png}
+						\includegraphics[scale=0.22]{fig5.png}
+					\end{center}
+				\caption{removed low frequency and inverse FT}
+				\end{figure}
+			\end{column}
+		\end{columns}
 		
 	\end{frame}
 
@@ -290,7 +297,7 @@
 		
 		
 		\item
-		The location (frequency-value) and height (amplitude) of the peaks in the frequency spectrum then can be used as input for Classifiers like Random Forest or Gradient Boosting
+		The location (frequency-value) and height of the peaks in the frequency spectrum then can be used as input for Classifiers like Random Forest or Gradient Boosting
 
 	\end{itemize}
 	
@@ -343,7 +350,7 @@
 		This means that it can tell us exactly which frequencies are present in a signal, but not at which location in time these frequencies have occurred.
 		
 		\item 
-		Code is available at \github
+		Code is available at \github.
 		
 	\end{itemize}
 	
@@ -353,7 +360,7 @@
 \begin{frame}
 	\frametitle{Example}
 	\begin{center}
-		\begin{figure}\label{fig4}
+		\begin{figure}
 			\includegraphics[scale=0.25]{fft_spectra-1.png}
 			\caption{ The signals and frequency spectrum of a signal which contains four frequencies at all times (top), four different frequencies at four different times (bottom).}	
 		\end{figure}
@@ -365,8 +372,7 @@
 
 \subsection{Short-Time Fourier Transform}
 \begin{frame}
-	\frametitle{From Fourier Transform to Wavelet Transform}
-	\framesubtitle{Short-Time Fourier Transform.}
+	\frametitle{Short-Time Fourier Transform.}
 	
 	\begin{itemize}
 		\item
@@ -388,8 +394,7 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{From Fourier Transform to Wavelet Transform}
-	\framesubtitle{Short-Time Fourier Transform.}
+	\frametitle{Short-Time Fourier Transform.}
 	The main problem with this approach is that you run into the theoretical limits of the Fourier Transform known as the uncertainty principle.
 	\begin{thatis}
 		The smaller we make the size of the window the more we will know about where a frequency has occurred in the signal, but less about the frequency value itself. The larger we make the size of the window the more we will know about the frequency value and less about the time.
@@ -421,7 +426,7 @@
 \begin{frame}
 	\frametitle{TS vs FT vs Short-Time FT vs Wavelet}
 	\begin{center}
-		\begin{figure}\label{fig5}
+		\begin{figure}
 			\includegraphics[scale=0.27]{Comparisonoftransformations.jpg}
 			\caption{A schematic overview of the time and frequency resolutions of the different transformations in comparison with the original time-series dataset. The size and orientations of the block gives an indication of the resolution size.}
 		\end{figure}
@@ -474,7 +479,7 @@
 	\frametitle{How does the Wavelet Transform work?}
 	The word wavelet means a small wave, and this is exactly what a wavelet is.
 	\begin{center}
-		\begin{figure}\label{fig6}
+		\begin{figure}
 			\includegraphics[scale=0.5]{Wavelet-Out1.jpg}
 			\caption{ The difference between a sine-wave and a Wavelet. The sine-wave is infinitely long and the Wavelet is localized in time.}
 		\end{figure}
@@ -518,7 +523,7 @@
 \begin{frame}
 	\frametitle{Wavelet families}
 	\begin{center}
-			\begin{figure}\label{fig7}
+			\begin{figure}
 			\includegraphics[scale=0.25]{wavelet_families.png}
 			\caption{ Several families of Wavelets. In the first row we see discrete wavelets and in the second row we see several continuous wavelets.}
 		\end{figure}
@@ -643,7 +648,7 @@
 \begin{frame}
 	\frametitle{Example}
 	\begin{center}
-		\begin{figure}\label{fig8}
+		\begin{figure}
 			\includegraphics[scale=0.3]{multilevel_coefficients_schematic.png}
 			\caption{The approximation and detail coefficients of the sym5 wavelet (level 1 to 5) applied on a chirp signal, from level 1 to 5. On the left we can see a schematic representation of the high pass and low pass filters applied on the signal at each level. available at \github.}
 		\end{figure}
