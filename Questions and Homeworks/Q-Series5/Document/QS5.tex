@@ -1,0 +1,399 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{dblfnote}
+\usepackage[perpage]{footmisc}
+\usepackage{indentfirst}
+\usepackage{framed}
+\usepackage{tikz}
+\usepackage{listings}[language=Python]
+\usepackage{float}
+%\usepackage{multicol}
+
+\usepackage{setspace}
+%\usepackage[skip=2mm, indent=17pt]{parskip}
+\onehalfspacing
+%\doublespacing
+
+
+% Custom colors
+\usepackage{color}
+
+%\setcounter{secnumdepth}{0}
+
+\usepackage[top=3cm, bottom=3cm, left = 2cm, right = 2cm]{geometry} 
+\geometry{a4paper} 
+\usepackage{url}
+\usepackage{graphicx} 
+\usepackage{amsmath,amssymb}  
+\usepackage[hidelinks]{hyperref}
+\usepackage[labelformat=empty]{caption}
+\usepackage{xepersian}
+\settextfont{XB Yas.ttf}
+\usepackage[utf8]{inputenc}
+
+%\usepackage{xepersian}
+
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\newcommand\pythonstyle{\lstset{
+		language=Python,
+		basicstyle=\ttm,
+		morekeywords={self},              % Add keywords here
+		keywordstyle=\ttb\color{deepblue},
+		emph={MyClass,__init__},          % Custom highlighting
+		emphstyle=\ttb\color{deepred},    % Custom highlighting style
+		stringstyle=\color{deepgreen},
+		frame=single,                         % Any extra options here
+		showstringspaces=false
+}}
+
+
+% Python environment
+\lstnewenvironment{python}[1][]
+{
+	\pythonstyle
+	\lstset{#1}
+}
+{}
+
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+		\pythonstyle
+		\lstinputlisting[#1]{#2}}}
+
+% Python for inline
+\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+
+
+
+
+\begin{document}	
+\noindent
+\begin{minipage}[c]{5cm}
+	\baselineskip=.7cm
+	\begin{flushright}
+		درس : یادگیری ماشین 
+		\\
+		دانشجو :
+		امیرمحمد خرازی
+		\\
+		شماره دانشجویی :
+		40152521002 
+		\\
+		استاد درس :  
+		\href{mrezghi.ir}{دکتر منصور رزقی آهق}
+	\end{flushright}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{3cm}
+	\begin{center}
+		\href{modares.ac.ir}{
+			\includegraphics[width=2cm]{logo.png}}
+	\end{center}	
+\end{minipage}
+\\[1mm]
+\hrule depth .5mm \relax
+\begin{flushright}
+	پرسش‌های کلاسی سری پنجم
+	\hfill
+	دانشکده علوم ریاضی ، گروه علوم کامپیوتر، گرایش داده‌کاوی
+	\\
+	\vspace{5mm}
+	گیت‌هاب درس (
+	\href{https://github.com/A-M-Kharazi/Machine-Learning-TMU.git}{لینک}
+	)
+	\hfill
+	گیت‌هاب این پرسش (
+	\href{https://github.com/A-M-Kharazi/Machine-Learning-TMU/tree/main/Questions/Q-Series5}{لینک}
+	)
+\end{flushright}
+
+\hrule depth .5mm\relax
+
+%\tableofcontents
+%\newpage
+
+
+\section*{سوال ۱ : }
+
+حزئیات لازم در فایل کد آورده شده است . روش رسم خط های جدا ساز نیز در سوال ۲ کمی اشاره شده است . برای رسم بیز از کانتور استفاده شده است. مقایسه ها نیز در همان کد قابل مشاهده است.
+
+
+\section*{سوال ۲ : }
+
+ابتدا دوگان مسئله 
+SVM
+را بدست می‌آوریم:
+\begin{align*}
+	Primal:SVM =& \max \frac{||W||_2^2}{2}\\
+	&s.t\\
+	&y_i \times(W^TX_i + W_0) \geq 1 \Rightarrow 1 - y_i\times(W^TX_i + W_0) \leq 0\\
+	&L(W,W_0,\alpha) = f_0(W) + \sum\limits_{i=1}^{N}\alpha_i\left[1 - y_i\times(W^TX_i + W_0)\right]\\
+	&if \hspace{5mm}\alpha_i \geq 0 \Rightarrow \min L  = g(\alpha) \leq f_0(x^\star)\\
+	&L(W,W_0, \alpha) = \frac{1}{2}W^TW + \sum \alpha_i - \sum\alpha_iy_iW^TX_i - \sum\alpha_iy_iW_0\\
+	& \frac{\partial L}{\partial W} = W - \sum \alpha_i y_i X_i = 0 \Rightarrow W = \sum \alpha_i y_i X_i \\
+	& \frac{\partial L}{\partial W_0} = \sum \alpha_i y_i = 0 \\
+	& \text{در فرمول لاگرانز جایگذاری می‌کنیم} \\
+	& g(\alpha) = \sum \alpha_i - \frac{1}{2}\sum\sum \alpha_i \alpha_j y_i y_j X_i X_j\\
+	& \text{دوست داریم 
+	$g$
+	به 
+	بهنیه مسئله 
+	primal
+	نزدیک شود پس آن را ماکسیمم می‌کنیم.
+	}\\
+	& dual : max g(\alpha) \hspace{5mm} alpha_i \geq 0
+\end{align*}
+با حل مسئله دوگان داریم :
+$W = \sum \alpha_i y_i X_i$
+و در ساخت 
+$W$
+تنها آن‌هایی اثر دارند که 
+$\alpha_i$
+آن‌ها مخالف صفر است. 
+
+پس :
+
+\begin{align*}
+	W = \sum \alpha_i y_i X_i = \begin{bmatrix}
+		0.846 \\0.3852
+	\end{bmatrix}
+\end{align*}
+با داشتن 
+$W^\star$
+می‌توانیم 
+با استفاده از شرط 
+KKT
+،
+مقدار 
+$W_0$
+را بدست آوریم. 
+
+می‌گوئیم 
+$
+\alpha_i \times \left[1 - y_i(W^{\star T} X_i + W_0)\right] = 0
+$
+
+بنابراین اگر در حایی 
+$\alpha_i \not= 0$
+بود، آنگاه بخش دوم آن صفر است . 
+
+
+\begin{align*}
+	\alpha_1 :& \left[1 - y_1\times(W^{\star T} X_1 + W_0)\right] \\
+	& W_0^{(1)} = 1 - W^{\star T} X_1 = -3.50108\\
+	\alpha_4 : & \left[-1 - y_4\times(W^{\star T} X_4 + W_0)\right] \\
+	& W_0^{(4)} = 1 - W^{\star T} X_4 = -3.5001999999999995\\
+	\alpha_7 : & \left[1 - y_7\times(W^{\star T} X_7 + W_0)\right] \\
+	& W_0^{(7)} = 1 - W^{\star T} X_7 = -3.5017999999999994\\
+	\alpha_9 : & \left[-1 - y_9\times(W^{\star T} X_9 + W_0)\right] \\
+	& W_0^{(9)} = 1 - W^{\star T} X_9 = -3.50092\\
+	&\Rightarrow W_0 = \frac{1}{4}\sum W_0^{(i)} = -3.5009999999999994 \approx -3.501\\
+\end{align*}
+
+لذا معاله این ابر صفحه خواهد بود :
+$W^{\star T} X + W_0^\star = 0$
+
+که بطور خلاصه برابر است با :
+\begin{align*}
+	W^{\star T} X + W_0^\star = 0 &\Rightarrow W_1 X_1 + W_2 X_2 + W_0 = 0 \Rightarrow \frac{W_1}{W_2}X_1 + \frac{W_2}{W_2}X_2 + \frac{W_0}{W_2} = 0 \\
+	& \Rightarrow X_2 = -\frac{W_1}{W_2}X_1 - \frac{W_0}{W_2} \hspace{5mm}\text{معادله خط جداساز}
+\end{align*} 
+
+برای فاصله یک نقطه مانند 
+$X_6$
+از این خط می‌توان یک نقطه روی این خط انتخاب کرد و 
+فاصله آن را با نرم ۲ بدست آورد :
+\begin{align*}
+	&dist(X_6, X_{i2} = -\frac{0.846}{0.3852}X_{i1} - \frac{-3.5}{0.3852} ) \\ 
+	&\Rightarrow d = \frac{|W_1 X_{61} + W_2 X_{62} + W_0|}{\sqrt{W_1^2 + W_2^2}} = -1.2497429918467136 \hspace{3mm}\text{فاصله مثبت است} \hspace{3mm } 1.2497429918467136
+\end{align*}
+درون محدوده بودن آن به مسئله اصلی بر می‌گردد. بهینه مسئله اصلی را اگر بدست آوریم یعنی 
+$\frac{||W||_2}{2} = ||x_1 - x_2 ||_2$
+با استفاده از مقادیر بدست آمده از $W$ این مقدار برابر 
+تقریبا
+$0.46$
+است که از هر دو طرف خط میانی فاصله دارد. لذا این نقطه خارج این بازه قرار خواهد داشت. جون فاصله آن بیشتر از این مقدار است.
+
+برای کلاس بندی نقطه 
+$z = (3,3)^T$
+کافی است آن را در معادله خط گذاشته و جواب را بررسی کنیم . اگر منفی بود، کلاس ۲ و اگر مثبت بود کلاس ۱ است. 
+\begin{align*}
+	z :  W_1 X_1 + W_2 X_2 + W_0 \Rightarrow = 0.19260000000000055 > 0  \Rightarrow \in C_1 : 1
+\end{align*}
+
+\section*{سوال ۳ : }
+
+هدف پیدا کردن صورت دوگان مسئله زیر است :
+\begin{align*}
+	\min_{W,b,\epsilon_i}& \frac{||W||^2}{2} + C\sum \epsilon_i \\
+	&s.t :\\
+	&y_i(W^TX_i + b) \geq 1 - \epsilon_i \Rightarrow (1-\epsilon_i) - y_i(W^TX_i + W_0) \leq 0\\
+	&\epsilon_i \geq 0 \Rightarrow -\epsilon_i \leq 0
+\end{align*}
+
+ابتدا فرم لاگرانژ آن را بدست می‌آوریم:
+\begin{align*}
+	L(W,W_0,\epsilon,\alpha,\beta) = \frac{||W||_2^2}{2} + C\sum \epsilon_i + \sum \alpha_i \times \left[(1-\epsilon_i) - y_i(W^TX_i + W_0) \right] + \sum \beta_i \times \left[-\epsilon_i\right]
+\end{align*}
+
+مرحله بعدی مشتق گرفتن و برابر صفر قرار دادن است :
+\begin{align*}
+	&\frac{\partial L}{\partial W} = 0 \Rightarrow W = \sum \alpha_i y_i X_i \hspace{3mm}\text{مانند قبل}\\
+	&\frac{\partial L}{\partial W_0} = 0 \Rightarrow \sum \alpha_i y_i = 0 \hspace{3mm}\text{مانند قبل}\\
+	& \frac{\partial L}{\partial \epsilon_i} = 0 \Rightarrow 0 + C - \alpha_i - \beta_i = 0 \Rightarrow \beta_i = C - \alpha_i \hspace{3mm}\text{C را ثابت گرفته ایم}\\
+	& \text{از آنجایی که 
+	$\beta_i$
+	و
+	$\alpha_i$
+	باید مثبت باشند در مسئله دوگان، داریم 
+	$C - \alpha_i \geq 0 $
+	پس
+	$0 \leq \alpha_i \leq C $	
+}\\
+\end{align*}
+با بدست آوردن این مقادیر آن‌ها را در لاگرانژ جایگذاری می‌کنیم (مانند سوال ۲) تا به 
+$g(\alpha, \beta)$
+برسیم.
+\begin{align*}
+	\Rightarrow &  \frac{W^TW}{2} + C\sum \epsilon_i + \sum \alpha_i \times \left[(1-\epsilon_i) - y_i(W^TX_i + W_0) \right] + \sum \beta_i \times \left[-\epsilon_i\right]\\
+	\bullet& \frac{1}{2}\sum\sum \alpha_i\alpha_j y_i y_j X_i X_j + C\sum \epsilon_i + \sum \alpha_i \\
+	\bullet& - \sum \alpha_i \epsilon_i - \sum \sum \alpha_i \alpha_j y_i y_j X_i X_j -\sum \alpha_i y_i W_0 - \sum \beta_i \epsilon_i\\
+	\bullet& -\frac{1}{2}\sum\sum \alpha_i \alpha_j y_i y_j X_i X_j +C\sum \epsilon_i + \sum \alpha_i - \sum \alpha_i\epsilon_i - W_0 \sum\alpha_iy_i  - \sum\beta_i\epsilon_i\\
+	\bullet& W_0 \sum\alpha_iy_i = 0 \hspace{3mm}\text{و}\hspace{3mm} C = \alpha_i + \beta_i \hspace{3mm}\text{از فرمول های قبل بدست می‌آیند}\\
+	\bullet& -\frac{1}{2}\sum\sum \alpha_i \alpha_j y_i y_j X_i X_j + \sum \alpha_i \epsilon_i + \sum \beta_i\epsilon_i + \sum \alpha_i - \sum \alpha_i \epsilon_i - \sum \beta_i \epsilon_i \\
+	\Rightarrow & g(\alpha) = \sum \alpha_i - \frac{1}{2}\sum\sum \alpha_i \alpha_j y_i y_j X_i X_j
+\end{align*}
+
+شبیه به همان حالت قبلی شد و تعداد پارامتر های دوگان آن با سوال ۲ که 
+SVM
+معمولی بود یکی شد، مسئله دوگان آن بصورت زیر است :
+\begin{align*}
+	Dual : \max& g(\alpha)\\
+	&s.t\\
+	& 0 \leq \alpha_i \leq C\\
+	& \sum \alpha_i y_i = 0
+\end{align*}
+
+فرض کنیم مسئله دوگان را حل کردیم و به بهین آن رسیدیم یعنی 
+$\alpha^\star$
+را بدست آوردیم. 
+با استفاده از آن مانند قبل (سوال قبل)، 
+$W^\star = \sum \alpha^\star_i y_i X_i$
+را بدست می‌آوریم.
+
+
+ با بررسی شرایط 
+KKT
+، مقدار 
+$W_0^\star$
+را به صورت میانگینی از آن‌ها بدست می‌آوریم. مثلا می‌گویم اگر 
+$\alpha_i \not= 0$
+بود آنگاه 
+$f_i$
+متناظر آن باید ۰ باشد و در این مسئله که 
+$W_0$
+برای ما مهم است، 
+$f_i$
+را برابر 
+$(1-\epsilon_i^\star) - y_i(W^{\star T} X_i + W_0)$
+قرار می‌دهیم و با حل این معادله 
+$f_i= 0$
+مقادیر 
+$W_0$
+را برای همه آن‌هایی که 
+$\alpha_i$
+مخالف صفر دارند بدست آورده و در نهایت 
+
+$W_0^\star$
+را میانگین این 
+$W_0$
+را در نظر می‌گیریم.
+
+
+اما برای بدست آوردن 
+$W_0^\star$
+علاوه بر بهین 
+$W^\star$
+به 
+$\epsilon_i^\star$
+نیز نیاز داریم. 
+
+
+بطور کلی با توجه به شرط KKT اگر 
+$\alpha_i$
+ای غیر صفر شود، 
+$f_i$
+آن صفر می‌شود. 
+\begin{itemize}
+	\item 
+	اگر
+	$\alpha_i$
+	صفر شود ، 
+	$y_i(W^TX_i + W_0) \geq 1$
+	\item
+	اگر 
+	$\alpha_i$
+	مقدار 
+	$C$
+	شود، 
+	$y_i(W^TX_i + W_0) \leq 1$
+	\item
+	و اگر 
+	$0 < \alpha_i < C$
+	آنگاه
+	$y_i(W^TX_i + W_0) = 1$
+\end{itemize}
+با استفاده از این 
+$W_0$
+را برابر 
+$y_i - W^TX_i$
+قرار می‌دهیم.
+
+
+برای label دادن به نقاط می‌توان از تابع 
+$f(x) = sign(W^Tx + W_0)$
+استفاده کرد.
+\begin{center}
+	\href{http://www.nathanielhobbs.com/documents/cvx_opt/cvx_opt_final_report.pdf}{\textbf{رفرنس این سوال}}
+\end{center}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
